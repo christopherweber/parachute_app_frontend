@@ -1,5 +1,7 @@
 import React from 'react'
 import FlightDisplay from './FlightDisplay';
+import InputRange from 'react-input-range';
+import { Route } from 'react-router-dom'
 
 export default class FlightForm extends React.Component{
 
@@ -8,7 +10,8 @@ export default class FlightForm extends React.Component{
         from: "",
         depart: "",
         return: "",
-        flights: []
+        flights: [],
+        price: ""
     }
 
     handleSubmit = (e) => {
@@ -26,48 +29,51 @@ export default class FlightForm extends React.Component{
         fetch(`https://api.skypicker.com/flights?flyFrom=${this.state.from}&to=${this.state.to}&dateFrom=${this.state.depart}&dateTo=${this.state.return}&partner=picky`)
         .then(response => response.json())
         .then(json => {
-            console.log(json.data)
+            console.log(json)
             this.setState({
                 flights: json.data
             })
         })
     }
-    
+
     
     render(){
 
-        // const data = this.state.flights.map(data){
 
-        // }
-
-        console.log(this.state.flights)
+        console.log(this.state.price)
 
         return (
-            <div>
-                <form onSubmit={(e) => this.handleSubmit(e)}>
-                    <lable>Fly From: </lable>
+            <div className="flight-form">
+                <form className="main-form" onSubmit={(e) => this.handleSubmit(e)}>
+                    
                     <input
+                    className="origin-field"
                     type="text"
                     name="from"
                     onChange={(e) => this.handleChange(e)}
+                    placeholder="🛫 Origin"
+                    required
                     
                     
                     />
 
-                    <lable>Fly to: </lable>
+                    
                     <input
                     type="text"
                     name="to"
                     onChange={(e) => this.handleChange(e)}
+                    placeholder="🛬 Destination"
+                    required
                     
                     />
 
                     <lable> Depart: </lable>
-                    <input
+                    <input className="departing-date"
                     type="text"
                     name="depart"
                     onChange={(e) => this.handleChange(e)}
                     placeholder="MM/DD/YYY"
+                    required
                     />
 
                     <lable> Return: </lable>
@@ -76,12 +82,29 @@ export default class FlightForm extends React.Component{
                     name="return"
                     onChange={(e) => this.handleChange(e)}
                     placeholder="MM/DD/YYY"
+                    required
                     />
-                    
 
-                <button>Submit</button>
+                    <div className="price-range">
+                    <label>Price Range</label>
+                    <input
+                    type="range" 
+                    id="start" 
+                    name="price"
+                    min="0"
+                    max="3000"
+                    placeholder="0"
+                    onChange={(e) => this.handleChange(e)}
+                    
+                    />
+                    </div>
+
+                    <div>
+                    <output> {this.state.price} </output>
+                    </div>
+                <button className="submit-button">Submit</button>
                 </form>
-                <FlightDisplay flights={this.state.flights}/>
+                <FlightDisplay flights={this.state.flights} price={this.state.price} />
             </div>
 
         )
