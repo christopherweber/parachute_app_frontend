@@ -11,7 +11,8 @@ export default class FlightForm extends React.Component{
         depart: "",
         return: "",
         flights: [],
-        price: ""
+        price: "",
+        direct: ""
     }
 
     handleSubmit = (e) => {
@@ -92,11 +93,16 @@ export default class FlightForm extends React.Component{
                     id="start" 
                     name="price"
                     min="0"
-                    max="3000"
+                    max="1500"
                     placeholder="0"
                     onChange={(e) => this.handleChange(e)}
                     
                     />
+
+                    <select>
+                    <option value="direct">direct</option>
+                    <option value="not">not direct</option>
+                    </select>
                     </div>
 
                     <div>
@@ -104,7 +110,7 @@ export default class FlightForm extends React.Component{
                     </div>
                 <button className="submit-button">Submit</button>
                 </form>
-                <FlightDisplay flights={this.state.flights} price={this.state.price} />
+                <FlightDisplay flights={this.state.flights} price={this.state.price} direct={this.state.direct} />
             </div>
 
         )

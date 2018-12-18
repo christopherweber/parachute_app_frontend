@@ -1,5 +1,6 @@
 import React from "react"
 import moment from 'moment';
+import FlightCard from "./FlightCard"
 
 export default class FlightDisplay extends React.Component {
 
@@ -15,16 +16,27 @@ export default class FlightDisplay extends React.Component {
     
     return Math.round(amount * EUR)
     }
+
+    priceRange = () => {
         
+    }
+
+    
     
     render(){
-        console.log(this.props.price)
+        let flightThere = false;
+        let hasChecked = false
+        console.log(this.props.direct)
         return(
             <div className="main-flight-div">
-               {
-                   this.props.flights.map(flight => {
-                       return (
-                           <div className="flight-display-divs">
+               {  
+                   this.props.flights.slice(0, 15).map(flight => {
+                       hasChecked = true
+                       if (this.props.price > this.convert(flight.conversion["EUR"])){
+                        flightThere = true;
+                           return (
+                               <div className="flight-display-divs">
+                        
                                 <div onClick={(e) => this.handleClick(flight.route.length)} className="flight-details">
                                         
                                         {
@@ -44,12 +56,17 @@ export default class FlightDisplay extends React.Component {
                                     <div>{flight.has_airport_change}</div>
                                     <div>{flight.route.length === 1 ? <p>Direct</p> : <p>Non-Direct</p>}</div>
                                     <div><a target="_blank" href={flight.deep_link}>Select Flight</a></div>
+                             
 
                               </div>
+
+                              {/* <FlightCard key={flight} flightObj={flight} /> */}
                            </div>
                        ) 
-                   })
-                }
+                    } 
+                })
+            } 
+            {flightThere === false && hasChecked === true ? <p>nada here puta</p>: null}
             </div>
         )
     }
