@@ -1,6 +1,8 @@
 import React from "react"
 import moment from 'moment';
 import FlightCard from "./FlightCard"
+import SingleFlight from './SingleFlight'
+
 
 export default class FlightDisplay extends React.Component {
 
@@ -21,53 +23,45 @@ export default class FlightDisplay extends React.Component {
         
     }
 
-    
-    
+    isDirectFlight = (flight) => {
+        if (this.props.direct && flight.route.length === 1){
+            return true
+        } else if (!this.props.direct) {
+            return true
+        } else if (this.props.direct && flight.route.length > 1) {
+            return false
+        }
+    }
+
     render(){
-        let flightThere = false;
-        let hasChecked = false
-        console.log(this.props.direct)
-        return(
-            <div className="main-flight-div">
-               {  
-                   this.props.flights.slice(0, 15).map(flight => {
-                       hasChecked = true
-                       if (this.props.price > this.convert(flight.conversion["EUR"])){
-                        flightThere = true;
-                           return (
-                               <div className="flight-display-divs">
-                        
-                                <div onClick={(e) => this.handleClick(flight.route.length)} className="flight-details">
-                                        
-                                        {
-                                            flight.airlines.map(airline => {
-                                                
-                                                return <img className="airline" src={`https://images.kiwi.com/airlines/64/${airline}.png`} alt=""/>
-                                            })
-                                        }
-                                        
-                                    <div className="flying">{flight.cityFrom} → {flight.cityTo} </div>
-                                    <div className="fly-duration">{flight.fly_duration} </div>
-                                    <div className="price">${this.convert(flight.conversion["EUR"])}</div>
-                                    <div className="time">
-                                        <div>{moment.unix(flight.dTime).format('LLL')}</div>
-                                        <div>{moment.unix(flight.aTime).format('LLL')}</div>
-                                    </div>
-                                    <div>{flight.has_airport_change}</div>
-                                    <div>{flight.route.length === 1 ? <p>Direct</p> : <p>Non-Direct</p>}</div>
-                                    <div><a target="_blank" href={flight.deep_link}>Select Flight</a></div>
-                             
+    //    true / false
+        const filteredFlights = this.props.flights.slice(0,50).filter(flight => {
+            return (this.props.price > this.convert(flight.conversion["EUR"]) && this.isDirectFlight(flight) )
+        })
+        //if the price of the flight is less than or equal to entered price
+        //return that flight
 
-                              </div>
+        //if the route.length is equal to 1 && direct
+        console.log(this.props.price)
+        
+            // this.props.flights.map(flight => {
+            //     console.log(flight.route.length)
+            // })
+            return (
 
-                              {/* <FlightCard key={flight} flightObj={flight} /> */}
-                           </div>
-                       ) 
-                    } 
-                })
-            } 
-            {flightThere === false && hasChecked === true ? <p>nada here puta</p>: null}
-            </div>
-        )
+                    <div className="main-flight-div"> 
+                        {filteredFlights.slice(0,15).map(flight => {
+                                // const hasChecked = true
+                                // console.log(hasChecked)
+                                // const flightThere = true;
+                                return ( <SingleFlight flight={flight} convert={this.convert}/>)
+                        })}
+                    {/* {flightThere === false && hasChecked === true ? <p>Shoot! No matching flights.</p>: null} */}
+                    </div>           
+            )
+
     }
 }
+
+// <FlightCard flights={this.props.flights} convert={this.convert} handleClick={this.handleClick}/>
+   

@@ -2,6 +2,9 @@ import React from 'react'
 import FlightDisplay from './FlightDisplay';
 import InputRange from 'react-input-range';
 import { Route } from 'react-router-dom'
+import ScrollableAnchor from 'react-scrollable-anchor'
+import { goToAnchor } from 'react-scrollable-anchor'
+import Autocomplete from './Autocomplete'
 
 export default class FlightForm extends React.Component{
 
@@ -12,8 +15,11 @@ export default class FlightForm extends React.Component{
         return: "",
         flights: [],
         price: "",
-        direct: ""
+        direct: false
     }
+
+ 
+
 
     handleSubmit = (e) => {
         e.preventDefault()
@@ -27,34 +33,46 @@ export default class FlightForm extends React.Component{
     }
 
     getFlights = () => {
-        fetch(`https://api.skypicker.com/flights?flyFrom=${this.state.from}&to=${this.state.to}&dateFrom=${this.state.depart}&dateTo=${this.state.return}&partner=picky`)
+        // let formFrom = this.state.from.split(' ').join('-').toLowerCase
+        // let formTo = this.state.from.split(' ').join('-').toLowerCase
+        fetch(`https://api.skypicker.com/flights?&flyFrom=${this.state.from}&to=${this.state.to}&dateFrom=${this.state.depart}&dateTo=${this.state.return}&partner=picky`)
         .then(response => response.json())
         .then(json => {
             console.log(json)
             this.setState({
                 flights: json.data
             })
+            goToAnchor("section1")
+            
         })
     }
 
+    handleCheck = (e) => {
+        this.setState({direct: e.target.checked})
+    }
+    
+    
+    
     
     render(){
-
-
-        console.log(this.state.price)
-
+        console.log('STATE', this.state)
+        
+        
+        console.log(this.state.flights)
+        
         return (
-            <div className="flight-form">
-                <form className="main-form" onSubmit={(e) => this.handleSubmit(e)}>
+            <div className="form-style-5">
+
+                <form onSubmit={(e) => this.handleSubmit(e)}>
                     
-                    <input
+                    <input 
                     className="origin-field"
                     type="text"
                     name="from"
+                    value={this.state.from}
                     onChange={(e) => this.handleChange(e)}
                     placeholder="🛫 Origin"
                     required
-                    
                     
                     />
 
@@ -68,23 +86,25 @@ export default class FlightForm extends React.Component{
                     
                     />
 
-                    <lable> Depart: </lable>
-                    <input className="departing-date"
-                    type="text"
-                    name="depart"
-                    onChange={(e) => this.handleChange(e)}
-                    placeholder="MM/DD/YYY"
-                    required
-                    />
+                    <div className="calendars">
+                        <lable></lable>
+                        <input
+                        type="input"
+                        name="depart"
+                        data-date-format="DD MM YYYY"
+                        onChange={(e) => this.handleChange(e)}
+                        required
+                        />
 
-                    <lable> Return: </lable>
-                    <input
-                    type="text"
-                    name="return"
-                    onChange={(e) => this.handleChange(e)}
-                    placeholder="MM/DD/YYY"
-                    required
-                    />
+                        <lable></lable>
+                        <input
+                        type="input"
+                        name="return"
+                        onChange={(e) => this.handleChange(e)}
+                        placeholder="MM/DD/YYY"
+                        required
+                        />
+                    </div>
 
                     <div className="price-range">
                     <label>Price Range</label>
@@ -99,18 +119,23 @@ export default class FlightForm extends React.Component{
                     
                     />
 
-                    <select>
-                    <option value="direct">direct</option>
-                    <option value="not">not direct</option>
-                    </select>
+                    <div>
+                    <output> {this.state.price} USD</output>
                     </div>
 
-                    <div>
-                    <output> {this.state.price} </output>
+                    <p className="checkbox-input">Direct:</p>
+                    <input type="checkbox" name="tick" id="tick" onChange={this.handleCheck}/>
+                    <label for="tick" className="tick_label"></label>
+                    
                     </div>
+
                 <button className="submit-button">Submit</button>
                 </form>
-                <FlightDisplay flights={this.state.flights} price={this.state.price} direct={this.state.direct} />
+                <div>
+                <ScrollableAnchor id={'section1'} className="ok-here">
+                    <FlightDisplay flights={this.state.flights} price={this.state.price} direct={this.state.direct} />
+                </ScrollableAnchor>
+                </div>
             </div>
 
         )

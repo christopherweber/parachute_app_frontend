@@ -1,0 +1,123 @@
+
+.parachute {
+  
+    animation: xAxis 20s infinite cubic-bezier(0.02, 0.01, 0.21, 1);
+  
+    &_img {
+      animation: mymove 5s infinite;
+  
+      &:before {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 60px;
+        animation: swing ease-in-out 1s infinite alternate;
+        transform-origin: center -20px;
+      }
+    }
+  }
+
+  .cloud-img-1 {
+    // z-index: -1;
+    // animation: animateCloud 10s alternate-reverse infinite;
+    // animation: mymove 2s linear;
+    animation: swingcloud ease-in-out 10s infinite alternate;
+  }
+  
+  .plane {
+    background: url("https://dl.dropboxusercontent.com/s/egcs4ohbyrfa39n/aeroplane.svg")
+      no-repeat;
+    width: 108px;
+    height: 108px;
+    position: absolute;
+    top: -16px;
+    left: -108px;
+    animation: right linear 30s infinite;
+  }
+  
+  @keyframes yAxis {
+    100% {
+      animation-timing-function: cubic-bezier(0.02, 0.01, 0.21, 1);
+      transform: translateY(-400px);
+    }
+  }
+  
+  @keyframes xAxis {
+    50% {
+      animation-timing-function: cubic-bezier(.2, 0.27, 0.07, 1.64);
+      transform: translateX(200px);
+    }
+  }
+  
+  @keyframes swing {
+    0% {
+      transform: rotate(50deg);
+    }
+    100% {
+      transform: rotate(-5deg);
+    }
+  }
+
+  @keyframes swingcloud {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(3deg);
+    }
+  }
+
+  @keyframes mymove {
+    from {top: 0px;}
+    to {top: 600px;}
+  }
+  
+  
+  @keyframes right {
+    0% {
+      left: -108px;
+    }
+    100% {
+      right: calc(100% + 108px);
+    }
+  }
+  
+  @keyframes move {
+    from {left: 0px;}
+    to {right: 600px;}
+  }
+
+  .small-cloud {
+    // height: 20px;
+    // width: 20px;
+    margin-top: 340px;
+    position: absolute;
+    z-index: -1;
+    animation: animateCloud 60s linear infinite;
+  }
+
+  .small-cloud-img {
+    height: 400px;
+    width: 550px;
+    z-index: -1;
+  }
+
+  .small-cloud-img-2 {
+    z-index: -1;
+    height: 200px;
+    animation: animateCloud 60s linear infinite;
+  }
+
+  .small-cloud-div {
+    position: relative;
+    z-index: -1;
+  }
+
+  @keyframes animateCloud {
+    0% {
+        margin-left: -1000px;
+    }
+    100% {
+        margin-left: 100%;
+    }
+}
