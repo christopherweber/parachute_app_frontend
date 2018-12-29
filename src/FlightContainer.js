@@ -9,7 +9,7 @@ import AnimationHome from './AnimationHome'
 export default class FlightContainer extends React.Component {
     render(){
         return(
-            <div>
+            <div id="main-page">
                 <NavBar />
                 <h1>Parachute</h1>
                 <AnimationHome />

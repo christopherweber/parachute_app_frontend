@@ -5,19 +5,27 @@ class NavBar extends React.Component {
 
     render(){
         return(
-            <div className="navbar">
-                <ul>
-                    <li>
-                    <Link to={'/home'}>Home</Link>  
-                    </li>
-                    <li>
-                        <Link to="login">Profile</Link>
-                    </li>
-                    <li>
-                    <Link to={'/yourflights'}>Your flights</Link>  
-                    </li>
-                </ul>
-            </div>
+            <nav role="navigation" className="navbar">
+                <div id="menuToggle" >
+                <input type="checkbox" />
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+                    <ul id="menu">
+                    <a href="#"><li>
+                        <Link to={'/home'}>Home</Link>  
+                        </li></a>
+                        <li>
+                            <Link to="login">Profile</Link>
+                        </li>
+                        <li>
+                        <Link to={'/yourflights'}>Your flights</Link>  
+                        </li>
+                    </ul>
+                </div>
+            </nav>
         )
     }
 }

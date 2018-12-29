@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import bob from './para-guy.png'
 import cloud from './animated-clouds.png'
+import plane from './plane.png'
 
 export default class AnimationHome extends Component {
   render() {
     return (
       <div>
                 <img src={cloud} className="cloud-img-1"/>
+                <img src={plane} className="plane" />
                 <div className="parachute">
                     <img src={bob} className="parachute-guy"/>
                 </div>

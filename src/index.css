@@ -19,6 +19,12 @@ body {
   /* overflow: hidden; */
 }
 
+#main-page {
+  /* overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: hidden; */
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -59,7 +65,7 @@ h2{
 .flight-form {
   position: absolute;
   text-align: center;
-  border: 4px solid black;
+  /* border: 4px solid black; */
   height: 500px;
   width: 600px;
   /* margin-left: 800px; */
@@ -143,17 +149,6 @@ h2{
 
 
 
-
-.departing-date {
-  background:#fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
-}
-.departing-date:-webkit-inner-spin-button {
-  display: none;
-}
-.departing-date:-webkit-calendar-picker-indicator {
-  opacity: 0;
-}
-
 input[type="text"] {
   border: 2px solid black;
   border-radius: 8px;
@@ -162,6 +157,15 @@ input[type="text"] {
   width: 190px;
   height: 50px;
 
+}
+
+output {
+  margin-left: 200px;
+  font-size: 26px;
+}
+
+input[type="checkbox"]{
+  opacity: .01;
 }
 
 .submit-button {
@@ -177,7 +181,8 @@ input[type="text"] {
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
   cursor: pointer;
-  margin-left: 20px;
+  margin-top: 20px;
+  margin-left: 345px;
 }
 
 .submit-button {
@@ -191,9 +196,6 @@ input[type="text"] {
   color: white;
 }
 
-.checkbox-input{
-  
-}
 
 .tick_label{
   width:100px;
@@ -227,17 +229,20 @@ input[type=checkbox]:checked + label {
 } 
 input:checked + .tick_label:before{
   left:75px;
+  opacity: 1;
 }
 
 .checkbox-input {
   margin-right: 150px;
+  margin-top: 47px;
+  font-size: 20px;
 }
 
 .cloud-img-1 {
   z-index: -1;
   float: right;
   margin-right: 134px;
-  height: 660px;
+  height: 560px;
   margin-top: -170px;
   position: fixed;
   margin-left: 700px;
@@ -257,27 +262,31 @@ input:checked + .tick_label:before{
   /* position: fixed; */
 	max-width: 500px;
   padding: 10px 20px;
-  border: 2px solid black;
+  /* border: 2px solid black; */
+  font-family: 'Open Sans', sans-serif;
   box-shadow: #000000;
   height: 496px;
   margin-left: 156px;
-	background: white;
+	background: blue;
   padding: 20px;
-  margin-top: -200px;
-	background: white;
+  margin-top: -150px;
+  background: white;
 	border-radius: 8px;
 	font-family: Georgia, "Times New Roman", Times, serif;
 }
 .form-style-5 fieldset{
-	border: none;
+  border: none;
+  font-family: 'Open Sans', sans-serif
 }
 .form-style-5 legend {
 	font-size: 1.4em;
-	margin-bottom: 10px;
+  margin-bottom: 10px;
+  font-family: 'Open Sans', sans-serif
 }
 .form-style-5 label {
 	display: block;
-	margin-bottom: 8px;
+  margin-bottom: 8px;
+  
 }
 .form-style-5 input[type="text"],
 .form-style-5 input[type="date"],
@@ -290,7 +299,7 @@ input:checked + .tick_label:before{
 .form-style-5 textarea,
 .form-style-5 select {
 	font-family: Georgia, "Times New Roman", Times, serif;
-	background: rgb(233, 227, 227);
+	background: yellow;
 	border: none;
 	border-radius: 4px;
 	font-size: 20px;
@@ -302,7 +311,7 @@ input:checked + .tick_label:before{
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box; 
 	background-color: #e8eeef;
-	color:#8a97a0;
+	color:blue;
 	-webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
 	box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
 	margin-bottom: 30px;
@@ -448,4 +457,22 @@ input[type=range]:focus::-ms-fill-lower {
 }
 input[type=range]:focus::-ms-fill-upper {
   background: #3071A9;
+}
+
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.liked-flights{
+  border: 2px solid black;
 }
