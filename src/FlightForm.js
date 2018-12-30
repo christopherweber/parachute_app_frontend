@@ -60,13 +60,13 @@ export default class FlightForm extends React.Component{
     }
     
     getFlights = () => {
-        let formFrom = this.state.from.split(' ').join('-').toLowerCase()
-        // let formTo = this.state.from.split(' ').join('-').toLowerCase
+        let formFrom = this.state.from.split(' ').join('-').toUpperCase()
+        let formTo = this.state.to.split(' ').join('-').toUpperCase()
         // let depart = this.convertDate(this.state.depart);
         // let return = this.convertDate(this.state.return);
 
         this.setState({ isLoading: true });
-        fetch(`https://api.skypicker.com/flights?&flyFrom=${this.state.from}&to=${this.state.to}&dateFrom=${this.state.startDate}&dateTo=${this.state.endDate}&partner=picky`)
+        fetch(`https://api.skypicker.com/flights?&flyFrom=${formFrom}&to=${formTo}&dateFrom=${this.state.startDate}&dateTo=${this.state.endDate}&partner=picky`)
         .then(response => response.json())
         .then(json => {
             console.log(json)
@@ -110,11 +110,8 @@ export default class FlightForm extends React.Component{
         
         console.log(this.state.endDate)
 
-
-    
-        
         return (
-    
+            
             <div className="form-style-5">
                 <form onSubmit={(e) => this.handleSubmit(e)}>
 
@@ -125,7 +122,7 @@ export default class FlightForm extends React.Component{
                     name="from"
                     value={this.state.from}
                     onChange={(e) => this.handleChange(e)}
-                    placeholder="🛫 Origin"
+                    placeholder="🛫 Origin, (enter airport code)"
                     required
                     
                     />
@@ -135,19 +132,28 @@ export default class FlightForm extends React.Component{
                     type="text"
                     name="to"
                     onChange={(e) => this.handleChange(e)}
-                    placeholder="🛬 Destination"
+                    placeholder="🛬 Destination, (enter airport code)"
                     required
                     
                     />
+                    {/* <o>Depart</o> */}
 
                     <div className="calendars">
 
-                        
+                    <div>  
+                        <img src={calendar}/>
+                    </div>
+
                         <DatePicker
+                            className="departing"
                             dateFormat="dd/MM/yyyy"
                             placeholderText={this.state.startDate}
                             onChange={this.handleStartDateChange}
                         />
+
+                    <div>  
+                        <img src={calendar}/>
+                    </div>
 
                         <DatePicker
                             dateFormat="dd/MM/yyyy"
@@ -183,15 +189,12 @@ export default class FlightForm extends React.Component{
 
                 </form>
                 <div>
-                {/* <LoadingScreen /> */}
-                {/* {this.state.flights.length > 1 ? */}
-                    {/* <div class="loader"></div> */}
                     {this.state.isLoading && <LoadingScreen />}
                 <ScrollableAnchor id={'section1'} className="ok-here">
                     <FlightDisplay flights={this.state.flights} price={this.state.price} direct={this.state.direct} />
                 </ScrollableAnchor>
-                    }
-                    {/* : <p>nothing</p>} */}
+                    
+
                     </div>
             </div>
 

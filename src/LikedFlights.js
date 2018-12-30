@@ -1,6 +1,7 @@
 import React from 'react'
 // import { isNull } from 'util';
 import Flight from './Flight'
+import { Link} from 'react-router-dom'
 
 export default class LikedFlights extends React.Component {
 
@@ -23,15 +24,10 @@ export default class LikedFlights extends React.Component {
         if (this.state.flights.length > 1){
                return this.state.flights.map(flight => {
                     return(
-                    //<div className="liked-flights">
-                    //<p>hello there</p>
-                    //<p>{flight.id}</p>
-                    //<p>{flight["city-to"]}</p>
-                    //<button>Remove Flight</button>
-                    //</div>
+                    // <NavBar />
                     <Flight flight={flight} flights={this.state.flights} />
                     )
         })
-        }      return <p>loading</p>
+        }      return <div className="loader"></div>
     }
 }

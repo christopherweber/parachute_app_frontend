@@ -89,6 +89,7 @@ h2{
 .flight-display-divs {
   margin-top: 40px;
   margin-right: auto;
+  margin-left: 132px;
   border: solid black 2px;
   border-radius: 13px;
   background-color: white;
@@ -144,7 +145,7 @@ h2{
 .calendars {
   display: flex;
   justify-content: space-around;
-  margin-top: 48px;
+  margin-top: 18px;
 }
 
 
@@ -169,19 +170,20 @@ input[type="checkbox"]{
 }
 
 .submit-button {
-  background-color: #4CAF50; /* Green */
+  background-color: rgb(12, 17, 12); /* Green */
   border: none;
   color: white;
   padding: 16px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 20px;
+  font-family: Georgia, "Times New Roman", Times, serif;
   margin: 4px 2px;
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
   cursor: pointer;
-  margin-top: 20px;
+  margin-top: -40px;;
   margin-left: 345px;
 }
 
@@ -460,11 +462,13 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 .loader {
-  border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid #3498db; /* Blue */
+  border: 16px solid rgb(238, 236, 236); /* Light grey */
+  border-top: 16px solid #008CBA; /* Blue */
   border-radius: 50%;
   width: 120px;
   height: 120px;
+  margin-left: 600px;
+  margin-top: -450px;
   animation: spin 2s linear infinite;
 }
 

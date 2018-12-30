@@ -4,7 +4,7 @@ export default class LoadingScreen extends Component {
   render() {
     return (
       <div>
-        <div class="loader"></div>
+        <div className="loader"></div>
       </div>
     )
   }

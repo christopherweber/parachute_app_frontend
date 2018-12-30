@@ -17,11 +17,9 @@ export default class FlightDisplay extends React.Component {
     let EUR = rates[0]
     
     return Math.round(amount * EUR)
+
     }
 
-    priceRange = () => {
-        
-    }
 
     isDirectFlight = (flight) => {
         if (this.props.direct && flight.route.length === 1){
@@ -38,29 +36,20 @@ export default class FlightDisplay extends React.Component {
         const filteredFlights = this.props.flights.slice(0,50).filter(flight => {
             return (this.props.price > this.convert(flight.conversion["EUR"]) && this.isDirectFlight(flight) )
         })
-        //if the price of the flight is less than or equal to entered price
-        //return that flight
-        //if the route.length is equal to 1 && direct
+
         console.log(this.props.price)
-        
-            // this.props.flights.map(flight => {
-            //     console.log(flight.route.length)
-            // })
+
             return (
 
                     <div className="main-flight-div"> 
                         {filteredFlights.slice(0,15).map(flight => {
-                                // const hasChecked = true
-                                // console.log(hasChecked)
-                                // const flightThere = true;
-                                return ( <SingleFlight flight={flight} convert={this.convert}/>)
+                                return ( <SingleFlight flight={flight} convert={this.convert} />)
                         })}
-                    {/* {flightThere === false && hasChecked === true ? <p>Shoot! No matching flights.</p>: null} */}
                     </div>           
             )
 
     }
 }
 
-// <FlightCard flights={this.props.flights} convert={this.convert} handleClick={this.handleClick}/>
+
    

@@ -4,6 +4,7 @@ import moment from 'moment';
 class SingleFlight extends React.Component {
 
     handleLike = (e,flight) => {
+
         fetch("http://localhost:3000/flights/", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
