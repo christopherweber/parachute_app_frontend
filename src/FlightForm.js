@@ -7,8 +7,12 @@ import { goToAnchor } from 'react-scrollable-anchor'
 import Autocomplete from './Autocomplete'
 import LoadingScreen from './LoadingScreen'
 import moment from 'moment'
-import DayPicker from 'react-day-picker';
-import 'react-day-picker/lib/style.css';
+import parseDate from './time'
+import DatePicker from "react-datepicker";
+import calendar from "./calendar.png"
+import "react-datepicker/dist/react-datepicker.css";
+
+
 
 export default class FlightForm extends React.Component{
 
@@ -19,9 +23,23 @@ export default class FlightForm extends React.Component{
         return: "",
         flights: [],
         price: "",
+        startDate: "",
+        endDate: "",
+        isLoading: false,
         direct: false
     }
 
+    handleStartDateChange = (e) => {
+        this.setState({
+            startDate: parseDate(e.toString())
+        })
+    }
+
+    handleEndDateChange = (e) => {
+        this.setState({
+            endDate: parseDate(e.toString())
+        })
+    }
 
     handleSubmit = (e) => {
         e.preventDefault()
@@ -42,23 +60,28 @@ export default class FlightForm extends React.Component{
     }
     
     getFlights = () => {
-        // let formFrom = this.state.from.split(' ').join('-').toLowerCase
+        let formFrom = this.state.from.split(' ').join('-').toLowerCase()
         // let formTo = this.state.from.split(' ').join('-').toLowerCase
         // let depart = this.convertDate(this.state.depart);
         // let return = this.convertDate(this.state.return);
 
-
-        fetch(`https://api.skypicker.com/flights?&flyFrom=${this.state.from}&to=${this.state.to}&dateFrom=${this.state.depart}&dateTo=${this.state.return}&partner=picky`)
+        this.setState({ isLoading: true });
+        fetch(`https://api.skypicker.com/flights?&flyFrom=${this.state.from}&to=${this.state.to}&dateFrom=${this.state.startDate}&dateTo=${this.state.endDate}&partner=picky`)
         .then(response => response.json())
         .then(json => {
             console.log(json)
             this.setState({
-                flights: json.data
+                flights: json.data,
+                isLoading: false
             })
+            // if (this.state.flights.length > 1){
             goToAnchor("section1")
-            
+            // } return  <div class="loader"></div>
         })
+    
     }
+
+  
 
     handleCheck = (e) => {
         this.setState({direct: e.target.checked})
@@ -67,19 +90,32 @@ export default class FlightForm extends React.Component{
     handleDate = (e) => {
         console.log(e)
     }
+
+    // handleLoader = () => {
+    //     return (
+    //                 <div class="loader"></div>
+    //     )
+    // }
+
     
     
     
     
     render(){
-        console.log('STATE', this.state)
+
         
+        console.log(this.state)
+        console.log('Flights:', this.state.flights)
+        console.log(this.state.startDate)
         
-        console.log(this.state.flights)
+        console.log(this.state.endDate)
+
+
+    
         
         return (
+    
             <div className="form-style-5">
-
                 <form onSubmit={(e) => this.handleSubmit(e)}>
 
                     
@@ -107,23 +143,18 @@ export default class FlightForm extends React.Component{
                     <div className="calendars">
 
                         
-                        <input
-                        type="input"
-                        name="depart"
-                        onChange={(e) => this.handleChange(e)}
-                        placeholder="MM/DD/YYY"
+                        <DatePicker
+                            dateFormat="dd/MM/yyyy"
+                            placeholderText={this.state.startDate}
+                            onChange={this.handleStartDateChange}
                         />
 
-                        <input
-                        type="input"
-                        name="return"
-                        onChange={(e) => this.handleChange(e)}
-                        placeholder="MM/DD/YYY"
-
-                        min="2018-06-24" 
-                        max="2019-06-23"
-                        required
+                        <DatePicker
+                            dateFormat="dd/MM/yyyy"
+                            placeholderText={this.state.endDate}
+                            onChange={this.handleEndDateChange}
                         />
+
 
                     </div>
 
@@ -153,10 +184,15 @@ export default class FlightForm extends React.Component{
                 </form>
                 <div>
                 {/* <LoadingScreen /> */}
+                {/* {this.state.flights.length > 1 ? */}
+                    {/* <div class="loader"></div> */}
+                    {this.state.isLoading && <LoadingScreen />}
                 <ScrollableAnchor id={'section1'} className="ok-here">
                     <FlightDisplay flights={this.state.flights} price={this.state.price} direct={this.state.direct} />
                 </ScrollableAnchor>
-                </div>
+                    }
+                    {/* : <p>nothing</p>} */}
+                    </div>
             </div>
 
         )

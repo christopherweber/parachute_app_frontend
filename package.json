@@ -7,6 +7,7 @@
     "@okta/okta-signin-widget": "^2.14.0",
     "airport-autocomplete-js": "^2.0.2",
     "backbone": "^1.3.3",
+    "datejs": "^1.0.0-rc3",
     "fuse-js-latest": "^3.1.0",
     "install": "^0.12.2",
     "moment": "^2.23.0",

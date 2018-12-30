@@ -15,11 +15,11 @@ export default class Flight extends Component {
             }
         })
             .then(res => res.json())
-            .then(res => {
-
-            })
+   
+           
             
     }
+
 
 
 

@@ -40,7 +40,6 @@ export default class FlightDisplay extends React.Component {
         })
         //if the price of the flight is less than or equal to entered price
         //return that flight
-
         //if the route.length is equal to 1 && direct
         console.log(this.props.price)
         

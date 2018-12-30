@@ -10,14 +10,6 @@ export default class LikedFlights extends React.Component {
       }
 
 
-    deleteFlight = (flightToDel) => {
-        debugger
-        this.setState({
-            flights: [...this.state.flights].filter(flight => {
-                return flight !== flightToDel
-            })
-        })
-    }
 
     componentDidMount() {
         fetch('http://localhost:3000/users/1')
@@ -26,14 +18,8 @@ export default class LikedFlights extends React.Component {
         // this.getLikedFlights(1)
     }
 
- 
 
     render(){
-
-        
-        console.log(this.state.flights)
-
-
         if (this.state.flights.length > 1){
                return this.state.flights.map(flight => {
                     return(
@@ -43,7 +29,7 @@ export default class LikedFlights extends React.Component {
                     //<p>{flight["city-to"]}</p>
                     //<button>Remove Flight</button>
                     //</div>
-                    <Flight deleteFlight={this.deleteFlight} flight={flight} />
+                    <Flight flight={flight} flights={this.state.flights} />
                     )
         })
         }      return <p>loading</p>

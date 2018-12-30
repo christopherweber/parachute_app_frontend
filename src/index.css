@@ -81,7 +81,7 @@ h2{
 }
 
 .the-form {
-  position: fixed;
+  /* position: fixed; */
   top: 170px;
   left: 70px;
 }
