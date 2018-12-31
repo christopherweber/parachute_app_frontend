@@ -180,11 +180,12 @@ export default class FlightForm extends React.Component{
                     <output> {this.state.price} USD</output>
                     </div>
 
-                    <div className="checkbox-input"> 
-                    Direct:<input type="checkbox" name="tick" id="tick" onChange={this.handleCheck}/>
+                    <div className="checkbox-input">
+                    <p className="direct">Direct:</p>
+                    <input type="checkbox" name="tick" id="tick" onChange={this.handleCheck}/>
                     <label for="tick" className="tick_label"></label>
                     </div>
-                <button className="submit-button">Submit</button>
+                <button className="submit-button">Search</button>
                     </div>
 
                 </form>

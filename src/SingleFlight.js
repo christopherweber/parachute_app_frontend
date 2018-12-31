@@ -1,5 +1,8 @@
 import React from "react"
 import moment from 'moment';
+import cloud from './animated-clouds.png'
+import plane from './plane.png'
+
 
 class SingleFlight extends React.Component {
 
@@ -18,6 +21,10 @@ class SingleFlight extends React.Component {
 
         return (
             <div>
+                 {/* <div className="small-cloud">
+                    <img src={cloud} className="small-cloud-img" />
+                 </div> */}
+
                  <div className="flight-display-divs">
                         
                         <div className="flight-details">
@@ -37,9 +44,11 @@ class SingleFlight extends React.Component {
                                 <div>{moment.unix(flight.dTime).format('LLL')}</div>
                                 <div>{moment.unix(flight.aTime).format('LLL')}</div>
                             </div>
-                            <div>{flight.route.length === 1 ? <p>Direct</p> : <p>Non-Direct</p>}</div>
-                            <div><a target="_blank" href={flight.deep_link}>Select Flight</a></div>
-                            <button onClick={(e) => this.handleLike(e,flight)}>Like</button>
+                            <div className="direct-option">{flight.route.length === 1 ? <p>Direct</p> : <p>Non-Direct</p>}</div>
+                            <div className="deep-link"><a target="_blank" href={flight.deep_link}>Select Flight</a></div>
+                            <button className="liked-button" onClick={(e) => this.handleLike(e,flight)}>
+                                
+                            </button>
                      
 
                       </div>

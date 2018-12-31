@@ -57,7 +57,7 @@ h2{
 }
 
 .navbar{
-  background-color: lightcoral;
+  background-color: lightgray;
   height: 70px;
 }
 
@@ -89,12 +89,12 @@ h2{
 .flight-display-divs {
   margin-top: 40px;
   margin-right: auto;
-  margin-left: 132px;
+  /* margin-left: 132px; */
   border: solid black 2px;
   border-radius: 13px;
   background-color: white;
   margin-bottom: 30px;
-  width: 1000px;
+  width: 1300px;
   text-align: center;
   height: 100px;
 }
@@ -116,8 +116,20 @@ h2{
   margin-top: 40px;
 }
 
+.direct-option {
+  margin-top: 22px;
+}
+
+.deep-link {
+  margin-top: 38px;
+}
+
+.like-button {
+
+}
+
 .main-flight-div {
-  margin-top: 500px;
+  margin-top: 300px;
 }
 
 .ok-here {
@@ -191,6 +203,7 @@ input[type="checkbox"]{
   background-color: white; 
   color: black; 
   border: 2px solid #008CBA;
+  /* border-radius: 60px; */
 }
 
 .submit-button:hover {
@@ -261,10 +274,8 @@ input:checked + .tick_label:before{
 
 
 .form-style-5{
-  /* position: fixed; */
 	max-width: 500px;
   padding: 10px 20px;
-  /* border: 2px solid black; */
   font-family: 'Open Sans', sans-serif;
   box-shadow: #000000;
   height: 496px;
@@ -301,7 +312,7 @@ input:checked + .tick_label:before{
 .form-style-5 textarea,
 .form-style-5 select {
 	font-family: Georgia, "Times New Roman", Times, serif;
-	background: yellow;
+	background: white;
 	border: none;
 	border-radius: 4px;
 	font-size: 20px;
@@ -313,7 +324,7 @@ input:checked + .tick_label:before{
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box; 
 	background-color: #e8eeef;
-	color:blue;
+	color:black;
 	-webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
 	box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
 	margin-bottom: 30px;
@@ -479,4 +490,11 @@ input[type=range]:focus::-ms-fill-upper {
 
 .liked-flights{
   border: 2px solid black;
+}
+
+.direct {
+  position: absolute;
+  margin-top: -7px;
+  margin-left: 5px;
+  font-size: 26px;
 }

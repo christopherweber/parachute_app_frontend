@@ -30,7 +30,7 @@
     position: absolute;
     top: -16px;
     left: -108px;
-    animation: animateCloud 30s linear infinite;
+    animation: animateCloud 40s linear infinite;
   }
   
   @keyframes yAxis {
@@ -104,7 +104,7 @@
   .small-cloud-img-2 {
     z-index: -1;
     height: 100px;
-    animation: animateCloud 60s linear infinite;
+    animation: animateCloud 70s linear infinite;
   }
 
   .small-cloud-div {
@@ -125,6 +125,7 @@ a
 {
   text-decoration: none;
   color: #232323;
+  font-family: georgia, sans-serif;
   
   transition: color 0.3s ease;
 }
@@ -254,5 +255,68 @@ a:hover
 #menuToggle input:checked ~ ul
 {
   transform: none;
+}
+.like-button {
+  background-color: rgb(12, 17, 12); /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  height: 20px;
+  width: 8px;
+  font-size: 12px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.like-text {
+  text-align: center;
+}
+
+.like-button {
+  background-color: #ef080885;
+  width: 100px;
+  margin-top: 29px;
+  color: black;
+  border-radius: 25px;
+  border: 2px solid #ec050500;
+  /* border-radius: 60px; */
+}
+
+.liked-button{
+  background-color: white;
+  font-size:20px;
+  padding:15px;
+  color:#fff;
+  border-radius: 33%;
+  font-family:arial;
+  font-weight:200;
+  cursor:pointer;
+  float:left;
+  height: 54px;
+  margin-top: 20px;
+}
+
+.liked-button:before{
+  content:'♥'; 
+  color:red;
+  font-size:20px;
+  padding:5px 10px;
+  // border-radius:100px;
+  // background-color: 
+}
+
+.liked-button:active{
+  box-shadow:0 0 3px #9e0c31;
+}
+
+.liked-button:active:before{
+  color:#420b1d;
+  box-shadow:         inset 0 0 1px #000000;
 }
 
