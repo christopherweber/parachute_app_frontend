@@ -60,8 +60,16 @@ export default class FlightForm extends React.Component{
     }
     
     getFlights = () => {
-        let formFrom = this.state.from.split(' ').join('-').toUpperCase()
-        let formTo = this.state.to.split(' ').join('-').toUpperCase()
+            let formFrom = ""
+            let formTo = ""
+            if (this.state.to.length === 3){
+                formFrom = this.state.from.split(' ').join('-').toUpperCase()
+                formTo = this.state.to.split(' ').join('-').toUpperCase()
+
+            } else {
+                formFrom = this.state.from.split(' ').join('-').toLowerCase()
+                formTo = this.state.to.split(' ').join('-').toLowerCase()
+            }
         // let depart = this.convertDate(this.state.depart);
         // let return = this.convertDate(this.state.return);
 
@@ -122,7 +130,7 @@ export default class FlightForm extends React.Component{
                     name="from"
                     value={this.state.from}
                     onChange={(e) => this.handleChange(e)}
-                    placeholder="🛫 Origin, (enter airport code)"
+                    placeholder="🛫 City of origin"
                     required
                     
                     />
@@ -132,7 +140,7 @@ export default class FlightForm extends React.Component{
                     type="text"
                     name="to"
                     onChange={(e) => this.handleChange(e)}
-                    placeholder="🛬 Destination, (enter airport code)"
+                    placeholder="🛬 City of destination"
                     required
                     
                     />
