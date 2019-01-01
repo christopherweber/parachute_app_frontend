@@ -57,7 +57,7 @@ h2{
 }
 
 .navbar{
-  background-color: lightgray;
+  background-color: #000000;
   height: 70px;
 }
 
@@ -99,6 +99,30 @@ h2{
   height: 100px;
 }
 
+.liked-flight-display-divs{
+  margin-top: 100px;
+  border: solid black 2px;
+  border-radius: 13px;
+  background-color: white;
+  width: 700px;
+  height: 100px;
+  margin-left: 200px;
+
+}
+
+.liked-flight-cities {
+  font-size: 20px;
+  margin-left: 20px;
+  margin-top: 35px;
+}
+
+.liked-deep-link {
+  float: right;
+  margin-right: 300px;
+  margin-top: -42px;
+
+}
+
 .flight-details {
   display: flex;
   justify-content: space-evenly;
@@ -122,10 +146,6 @@ h2{
 
 .deep-link {
   margin-top: 38px;
-}
-
-.like-button {
-
 }
 
 .main-flight-div {
@@ -496,5 +516,21 @@ input[type=range]:focus::-ms-fill-upper {
   position: absolute;
   margin-top: -7px;
   margin-left: 5px;
+  font-size: 26px;
+}
+
+.no-saved-flights{
+  position: relative;
+  font-family: 'Pacifico', cursive;
+  font-size: 70px;
+  margin-left: 263px;
+  margin-block-start: 0;
+  display: flex;
+  margin-top: 100px;
+
+}
+
+.redirect {
+  margin-left: 16em;
   font-size: 26px;
 }
