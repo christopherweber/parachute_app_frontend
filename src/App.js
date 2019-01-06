@@ -13,8 +13,9 @@ class App extends Component {
       <div>
         <NavBar />
         <Switch>
+        <Route exact path="/" component={FlightContainer} />
         <Route path="/home" component={FlightContainer} />
-        <Route path="/yourflights" component={LikedFlights} />
+        <Route path="/savedflights" component={LikedFlights} />
         <Route path="/login" component={LoginPage} />
         </Switch>
       </div>

@@ -6,20 +6,6 @@ export default class Flight extends Component {
         this.props.handleDelete(obj.flight.id)
     }
 
-    // handleDelete = (flightId) => {
-    //     console.log(flightId)
-    //     fetch(`http://localhost:3000/flights/${flightId}`, {
-    //         method: 'DELETE',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         }
-    //     })
-    //         .then(res => res.json())
-   
-                    
-    // }
-
-
 
 
   render() {
@@ -32,7 +18,7 @@ export default class Flight extends Component {
             </div>
 
             <div className="liked-flight-display-divs">
-                <p className="liked-flight-cities">{this.props.flight["city-to"]} → {this.props.flight["city-from"]}</p>
+                <p className="liked-flight-cities">{this.props.flight["city-from"]} → {this.props.flight["city-to"]}</p>
                 <p className="liked-flight-price">{this.props.flight["price"]}</p>
                 <div className="liked-deep-link"><a target="_blank" href={this.props.flight["deep-link"]}>Book Flight</a></div>
 

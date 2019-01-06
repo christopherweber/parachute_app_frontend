@@ -1,12 +1,8 @@
 import React from 'react'
 import FlightDisplay from './FlightDisplay';
-import InputRange from 'react-input-range';
-import { Route } from 'react-router-dom'
 import ScrollableAnchor from 'react-scrollable-anchor'
 import { goToAnchor } from 'react-scrollable-anchor'
-import Autocomplete from './Autocomplete'
 import LoadingScreen from './LoadingScreen'
-import moment from 'moment'
 import parseDate from './time'
 import DatePicker from "react-datepicker";
 import calendar from "./calendar.png"
@@ -98,20 +94,10 @@ export default class FlightForm extends React.Component{
     handleDate = (e) => {
         console.log(e)
     }
-
-    // handleLoader = () => {
-    //     return (
-    //                 <div class="loader"></div>
-    //     )
-    // }
-
-    
-    
     
     
     render(){
-
-        
+    
         console.log(this.state)
         console.log('Flights:', this.state.flights)
         console.log(this.state.startDate)
@@ -144,7 +130,6 @@ export default class FlightForm extends React.Component{
                     required
                     
                     />
-                    {/* <o>Depart</o> */}
 
                     <div className="calendars">
 
@@ -155,8 +140,9 @@ export default class FlightForm extends React.Component{
                         <DatePicker
                             className="departing"
                             dateFormat="dd/MM/yyyy"
-                            placeholderText={this.state.startDate}
+                            value={this.state.startDate}
                             onChange={this.handleStartDateChange}
+                            required
                         />
 
                     <div>  
@@ -165,8 +151,9 @@ export default class FlightForm extends React.Component{
 
                         <DatePicker
                             dateFormat="dd/MM/yyyy"
-                            placeholderText={this.state.endDate}
+                            value={this.state.endDate}
                             onChange={this.handleEndDateChange}
+                            required
                         />
 
 

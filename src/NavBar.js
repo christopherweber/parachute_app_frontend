@@ -21,7 +21,7 @@ class NavBar extends React.Component {
                             <Link to="login">Login</Link>
                         </li>
                         <li>
-                        <Link to={'/yourflights'}>Saved flights</Link>  
+                        <Link to={'/savedflights'}>Saved flights</Link>  
                         </li>
                     </ul>
                 </div>

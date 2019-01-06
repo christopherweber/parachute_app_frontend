@@ -1,15 +1,8 @@
 import React from "react"
-import moment from 'moment';
-import FlightCard from "./FlightCard"
 import SingleFlight from './SingleFlight'
 
 
 export default class FlightDisplay extends React.Component {
-
-    handleClick = (e) => {
-
-        console.log(e);
-    }
 
     convert = (amount) => {
     let rates = [1.35, 0.0145]

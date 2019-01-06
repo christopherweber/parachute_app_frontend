@@ -1,8 +1,5 @@
 import React from "react"
 import moment from 'moment';
-import cloud from './animated-clouds.png'
-import plane from './plane.png'
-
 
 class SingleFlight extends React.Component {
 
@@ -21,10 +18,6 @@ class SingleFlight extends React.Component {
 
         return (
             <div>
-                 {/* <div className="small-cloud">
-                    <img src={cloud} className="small-cloud-img" />
-                 </div> */}
-
                  <div className="flight-display-divs">
                         
                         <div className="flight-details">

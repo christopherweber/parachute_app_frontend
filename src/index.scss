@@ -18,9 +18,6 @@
   }
 
   .cloud-img-1 {
-    // z-index: -1;
-    // animation: animateCloud 10s alternate-reverse infinite;
-    // animation: mymove 2s linear;
     animation: swingcloud ease-in-out 8s infinite alternate;
   }
   
@@ -30,7 +27,7 @@
     position: absolute;
     top: -16px;
     left: -108px;
-    animation: animateCloud 27s linear infinite;
+    animation: animateCloud 23s linear infinite;
   }
   
   @keyframes yAxis {
@@ -272,9 +269,13 @@ a:hover {
   margin-top: 20px;
 }
 
+// .liked-button:focus{
+//   outline: none;
+// }
+
 .liked-button:before{
   content:'♥'; 
-  color:red;
+  color: gray;
   font-size:20px;
   padding:5px 10px;
   // border-radius:100px;
@@ -285,18 +286,18 @@ a:hover {
   box-shadow:0 0 3px #9e0c31;
 }
 
+.liked-button:active:focus{
+  outline: none;
+}
+
 .liked-button:active:before{
-  color:#420b1d;
-  box-shadow:         inset 0 0 1px #000000;
+  color:red;
 }
 
 .remove-button {
   float: right;
   margin-top: -40px;
 }
-
-// @import url(https://fonts.googleapis.com/css?family=Lato:700);
-// html, body{background : #fafafa; font-family : Lato; height: 100%; width: 100%; margin: 0;}
 
 .btn-a {
 color: #fafafa;

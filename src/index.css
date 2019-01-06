@@ -493,8 +493,8 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 .loader {
-  border: 16px solid rgb(238, 236, 236); /* Light grey */
-  border-top: 16px solid #008CBA; /* Blue */
+  border: 16px solid rgb(238, 236, 236); 
+  border-top: 16px solid #008CBA;
   border-radius: 50%;
   width: 120px;
   height: 120px;

@@ -21,27 +21,12 @@ export default class LikedFlights extends React.Component {
         })
             .then(res => res.json())
             .then(res => {
-            //     this.setState({
-            //     flightDeleted: !this.state.flightDeleted
-            // }, () => console.log(this.state))
             this.fetchthePlanes()
         })
    
                     
     }
 
-
-    // handleNewDelete = (e) => {
-    //     debugger
-    //     const arr = [...this.state.flights]
-    //     const idx = arr.indexOf(e.target.value)
-    //     if (idx !== -1){
-    //         arr.splice(idx, 1)
-    //         this.setState({
-    //             flights: arr
-    //         })
-    //     }
-    // }
 
     fetchthePlanes = () => {
         fetch('http://localhost:3000/users/1')
@@ -62,7 +47,7 @@ export default class LikedFlights extends React.Component {
     render(){
         if (this.state.flights.length > 1){
                return this.state.flights.map(flight => {
-                    return(
+                    return(                
                     <Flight flight={flight} flights={this.state.flights} handleDelete={this.handleDelete} />
                     )
         })
