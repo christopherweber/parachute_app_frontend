@@ -39,8 +39,8 @@ class SingleFlight extends React.Component {
                             </div>
                             <div className="direct-option">{flight.route.length === 1 ? <p>Direct</p> : <p>Non-Direct</p>}</div>
                             <div className="deep-link"><a target="_blank" href={flight.deep_link}>Book Flight</a></div>
-                            <button className="liked-button" onClick={(e) => this.handleLike(e,flight)}>
-                                
+                            <button className="like-btn" onClick={(e) => this.handleLike(e,flight)}>
+                            Save
                             </button>
                      
 

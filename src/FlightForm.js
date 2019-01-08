@@ -116,7 +116,7 @@ export default class FlightForm extends React.Component{
                     name="from"
                     value={this.state.from}
                     onChange={(e) => this.handleChange(e)}
-                    placeholder="🛫 City of origin"
+                    placeholder="🛫  City or airport code of origin"
                     required
                     
                     />
@@ -126,7 +126,7 @@ export default class FlightForm extends React.Component{
                     type="text"
                     name="to"
                     onChange={(e) => this.handleChange(e)}
-                    placeholder="🛬 City of destination"
+                    placeholder="🛬  City or airport code of destination"
                     required
                     
                     />

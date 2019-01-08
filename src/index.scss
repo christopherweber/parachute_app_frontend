@@ -92,7 +92,6 @@
   }
 
   .small-cloud-img {
-    // margin-top: 500px;
     height: 300px;
     width: 450px;
     z-index: -1;
@@ -157,15 +156,13 @@ a:hover {
   
   cursor: pointer;
   
-  opacity: 0; /* hide this */
-  z-index: 2; /* and place it over the hamburger */
+  opacity: 0;
+  z-index: 2;
   
   -webkit-touch-callout: none;
 }
 
-/*
- * Just a quick hamburger
- */
+
 #menuToggle span
 {
   display: block;
@@ -209,18 +206,13 @@ a:hover {
   transform: rotate(0deg) scale(0.2, 0.2);
 }
 
-/*
- * Ohyeah and the last one should go the other direction
- */
+
 #menuToggle input:checked ~ span:nth-last-child(2)
 {
   transform: rotate(-45deg) translate(0, -1px);
 }
 
-/*
- * Make this absolute positioned
- * at the top left of the screen
- */
+
 #menu
 {
   position: absolute;
@@ -325,6 +317,11 @@ transition: .5s;
   margin-right: 20px;
   float: right;
 }
+
+.btn:focus{
+  outline:none;
+}  
+
 .btnText {
   margin-top : 80px;
   color : white;
@@ -346,6 +343,11 @@ transition: .5s;
   left : -200px;
   transition : .3s;
 }
+
+.hoverBtn:focus{
+  outline:none;
+}  
+
 .hoverText {
   margin-top : 72px;
   margin-right: 50px;
